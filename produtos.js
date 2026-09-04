@@ -2,7 +2,7 @@ const produtos = [
     {
     id: 1,
     nome: "Notebook",
-    categoria: "eletrônicos",
+    categoria: "eletronicos",
     preco: 2500,
     estoque: 5
     },
@@ -36,33 +36,62 @@ const produtos = [
     },
         {
     id: 6,
-    nome: "Pasta de dente",
-    categoria: "higienezação",
-    preco: 5,
+    nome: "Vestido",
+    categoria: "roupas",
+    preco: 190,
     estoque: 0
     },
 ]
 
 export function nomeProdutos(){
-    const nomeProdutos = produtos.map((produto) => {
-    const {nome} = produto
-    return nome
-})
-    return nomeProdutos
-}
-
+    return produtos.map(produto => produto.nome)
+} 
 export function nomeById(a){
-    const nomeById = produtos.map(({nome}) => {
-        return nome
+    const produtoId = produtos.find((produto) => {
+        return produto.id === a;
     });
-    const id = produtos.some(({id}) =>{
-        return id === a
-    })
-    if (id){
-        return console.log(nomeById[a])
+    if (produtoId){
+        return produtoId.nome
     }
     else{
-        return console.log("Não cadastrado")
+        return "ID não existe"
     }
 }
-nomeById(4)
+export function nomeByCat(a){
+    const produtoCat = produtos.filter((produto) => {
+        return produto.categoria === a;
+    });
+    const listCat = produtoCat.map((list) => {
+        return list.nome
+    })
+    if (listCat.length === 0){
+        return "Categoria não possui nenhum item cadastrado"
+    }
+    else{
+        return listCat
+    }
+}
+export function nomeByPrice(a){
+    const produtoPreco = produtos.filter(produto => produto.preco >= a)
+    return produtoPreco.map(produto => produto.nome)
+}
+export function verificarEstoque(){
+    return produtos.some(produto => produto.estoque === 0)? "Temos produtos com estoque zerado." : "Todos os itens possuem estoque."
+}
+export function nomeProdutoDisp(){
+    const temEstoque = produtos.filter(produto => produto.estoque)
+    return temEstoque.map(produto => produto.nome)
+}
+export function valorEstoque(){
+    let valores = [];
+    let acumular = 0;
+    for (const produto of produtos){
+        let {preco, estoque} = produto
+        let valorItem = preco * estoque
+        valores.push(valorItem)
+    }
+    valores.forEach(valor => {
+        acumular += valor
+    });
+    return acumular
+}
