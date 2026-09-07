@@ -148,7 +148,14 @@ export function nomeByPrice(a){
     return produtoPreco.map(produto => produto.nome)
 }
 export function verificarEstoque(){
-    return produtos.some(produto => produto.estoque === 0)
+    const produtoZerado = produtos.filter(produto => 
+        produto.estoque === 0)
+        if (produtoZerado.length === 0){
+            return console.log("Todos nossos produtos tem estoque")     
+        }           
+        else{
+            return console.log(`Itens com estoque zerado: ${produtoZerado.map(produto => produto.nome).join(", ")}`)
+    }
 }
 export function nomeProdutoDisp(){
     const temEstoque = produtos.filter(produto => produto.estoque)
@@ -174,3 +181,11 @@ export function produtoById(a){
     }
 
 }
+export const produtosCaros = (valor) => {
+    const produtos = nomeByPrice(valor)
+    if (produtos.length === 0){
+        console.log("Não temos produtos nesse valor")
+    }
+    else{
+    console.log(`O itens que possuem valor igual ou maior que o valor inserido (R$${valor}) são: ${nomeByPrice(valor).join(`, `)}`)
+}}

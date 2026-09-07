@@ -107,4 +107,26 @@ export function mostValue(){
     }
     return valorMaisAlto
 }
-export default pedidosExistentes()
+export function pedidoMostValue(){
+    let valorMaisAlto = 0;
+    for (const pedido of pedidos){
+        const {cliente, id} = pedido
+        let valorAtual = totalPedido(id)
+        if (valorMaisAlto < valorAtual){
+            valorMaisAlto = valorAtual
+        }
+        
+    }
+}
+export const resumoPedido = (id) =>{
+    const pedido = pedidoById(id)
+    if (pedido === undefined){
+        return console.log("Esse pedido não existe")
+    }
+    else{
+        const {cliente} = pedido
+        const valor = totalPedido(id)
+        return console.log(`Pedido No. ${id} \n Cliente: ${cliente} \n Valor total do pedido: R$${valor}`)
+    }
+}
+export default pedidosExistentes

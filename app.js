@@ -1,4 +1,17 @@
-import {nomeByPrice} from "./produtos.js"
+import {nomeByPrice, verificarEstoque, produtosCaros, valorEstoque} from "./produtos.js"
 
+import pedidosExistente, { pedidoById, totalPedido, resumoPedido } from "./pedidos.js"
 
-nomeByPrice()
+//Relatório 1: Produtos que são mais caros do que o valor atribuido ao argumento
+produtosCaros(0)
+
+//Relatório 2: Uma atualização na função atualizar estoque que retorna quais itens estão em falta
+verificarEstoque()
+
+//Relatório 3: Retorna pontualmente o valor de estoque existente 
+console.log(`Nosso valor atual de estoque é: R$${valorEstoque()}`)
+
+//Relatório 4: Apresenta um resumo do pedido solicitado, caso ele exista
+resumoPedido(1)
+
+//Relatório 5
