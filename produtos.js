@@ -158,17 +158,6 @@ const produtos = [
 export function nomeProdutos(){
     return produtos.map(produto => produto.nome)
 } 
-// export function nomeById(a){
-//     const produtoId = produtos.find((produto) => {
-//         return produto.id === a;
-//     });
-//     if (produtoId){
-//         return produtoId.nome
-//     }
-//     else{
-//         return "ID não existe"
-//     }
-// }
 export function nomeByCat(a){
     const produtoCat = produtos.filter((produto) => {
         return produto.categoria === a;
@@ -188,15 +177,9 @@ export function nomeByPrice(a){
     return produtoPreco.map(produto => produto.nome)
 }
 export function verificarEstoque(){
-    const produtoZerado = produtos.filter(produto => 
-        produto.estoque === 0)
-        if (produtoZerado.length === 0){
-            return console.log("Todos nossos produtos tem estoque")     
-        }           
-        else{
-            return console.log(`Itens com estoque zerado: ${produtoZerado.map(produto => produto.nome).join(", ")}`)
-    }
+    return produtos.some(produto => produto.estoque === 0)
 }
+
 export function nomeProdutoDisp(){
     const temEstoque = produtos.filter(produto => produto.estoque)
     return temEstoque.map(produto => produto.nome)

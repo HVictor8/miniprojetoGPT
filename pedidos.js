@@ -115,22 +115,20 @@ const pedidos = [
 ];
 
 function pedidosExistentes(){
-    for (const pedido of pedidos){
-        console.log(`Pedido No. 0${pedido.id}:\n Cliente: ${pedido.cliente}`)
+    const peddidos = []
+    for(let pedido of pedidos){ 
+        peddidos.push(pedido)
     }
-    return "";
+    return peddidos
 }
 export function pedidoById(a){
     return pedidos.find(pedido => pedido.id === a)
 }
 export function totalPedido(pedidoId){
-        const pedido = pedidoById(pedidoId)
-        if (pedido == undefined){
-            return console.log("Pedido não existente")
-        }
-        else{
-        const itens = pedido.itens
-        let acumular = 0;
+    const pedido = pedidoById(pedidoId)
+    if (pedido !== undefined){
+    const itens = pedido.itens
+    let acumular = 0;
         for (let item of itens){
             const produtos = item.produtoId
             const produto = produtoById(produtos)
@@ -139,6 +137,9 @@ export function totalPedido(pedidoId){
             acumular += preco * quantidade
         }
         return acumular
+    }
+    else{
+        return "Pedido não existente"
     }
 }
 export function totalTodosPedidos(){
@@ -163,12 +164,10 @@ export function mostValue(){
 export const resumoPedido = (id) =>{
     const pedido = pedidoById(id)
     if (pedido === undefined){
-        return console.log("Esse pedido não existe")
+        return undefined
     }
     else{
-        const {cliente} = pedido
-        const valor = totalPedido(id)
-        return console.log(`Pedido No. ${id} \n Cliente: ${cliente} \n Valor total do pedido: R$${valor}`)
+        return pedido
     }
 }
 
@@ -182,8 +181,7 @@ export function mostValueOrder(){
             idAtual = i
         }  
     }
-    const pedidoMaisCaro = pedidos[idAtual-1]
-    return console.log(`O pedido com o valor mais caro é do cliente: ${pedidoMaisCaro.cliente}, no valor de R$${valorMais}`)
+    return pedidos[idAtual-1]
 }
 
 export default pedidosExistentes

@@ -6,13 +6,13 @@ import pedidosExistente, { pedidoById, totalPedido, resumoPedido, mostValueOrder
 produtosCaros(1000)
 
 //Relatório 2: Uma atualização na função atualizar estoque que retorna quais itens estão em falta
-verificarEstoque()
+console.log(`Temos produtos zerados: ${verificarEstoque()}`)
 
 //Relatório 3: Retorna pontualmente o valor de estoque existente 
 console.log(`Nosso valor atual de estoque é: R$${valorEstoque()}`)
 
 //Relatório 4: Apresenta um resumo do pedido solicitado, caso ele exista
-resumoPedido(1)
+console.log(resumoPedido(14))
 
 //Relatório 5: Checando todos os pedidos, verificando seus valores finais, esse determina qual o pedido de valor mais alto
-mostValueOrder()
+console.log(mostValueOrder())
