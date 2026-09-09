@@ -170,18 +170,19 @@ export const resumoPedido = (id) =>{
         return pedido
     }
 }
-
 export function mostValueOrder(){
     let valorMais = 0;
     let idAtual = 0;
-    for (let i=0; i<=pedidos.length; i++){
-        const total = totalPedido(i)
-        if (valorMais < total){
+    for (let pedido of pedidos) {
+        let { id } = pedido
+        const total = totalPedido(id)
+        if(valorMais < total) {
             valorMais = total
-            idAtual = i
-        }  
+            idAtual = id
+        }
     }
-    return pedidos[idAtual-1]
+    const pedido = pedidoById(idAtual)
+    return pedido
 }
 
 export default pedidosExistentes
