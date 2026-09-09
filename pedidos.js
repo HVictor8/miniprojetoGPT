@@ -129,4 +129,19 @@ export const resumoPedido = (id) =>{
         return console.log(`Pedido No. ${id} \n Cliente: ${cliente} \n Valor total do pedido: R$${valor}`)
     }
 }
+
+export function mostValueOrder(){
+    let valorMais = 0;
+    let idAtual = 0;
+    for (let i=0; i<=pedidos.length; i++){
+        const total = totalPedido(i)
+        if (valorMais < total){
+            valorMais = total
+            idAtual = i
+        }  
+    }
+    const pedidoMaisCaro = pedidos[idAtual-1]
+    return console.log(`O pedido com o valor mais caro é do cliente: ${pedidoMaisCaro.cliente}, no valor de R$${valorMais}`)
+}
+
 export default pedidosExistentes
