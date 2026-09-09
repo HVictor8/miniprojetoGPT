@@ -1,20 +1,23 @@
 import {produtoById} from "./produtos.js"
 
 const pedidos = [
-    {id: 1,
-     cliente: "Mariana",
-     itens: [
-        {produtoId: 1, quantidade: 2}
-     ]   
+    {
+        id: 1,
+        cliente: "Mariana",
+        itens: [
+            {produtoId: 1, quantidade: 2}
+        ]   
     },
-    {id: 2,
+    {
+        id: 2,
         cliente: "Victor",
         itens: [
             {produtoId: 2, quantidade: 1},
             {produtoId: 3, quantidade: 3}
         ]
     },
-    {id: 3,
+    {
+        id: 3,
         cliente: "Júlio",
         itens: [
             {produtoId: 14, quantidade: 3},
@@ -59,8 +62,58 @@ const pedidos = [
             {produtoId: 11, quantidade: 3},
             {produtoId: 15, quantidade: 2}
         ]
+    },
+    // --- NOVOS PEDIDOS COM OS PRODUTOS RECENTES ---
+    {
+        id: 9,
+        cliente: "Rodrigo",
+        itens: [
+            {produtoId: 482, quantidade: 1}, // Cafeteira Express
+            {produtoId: 295, quantidade: 2}  // Garrafa Térmica
+        ]
+    },
+    {
+        id: 10,
+        cliente: "Camila",
+        itens: [
+            {produtoId: 711, quantidade: 1}, // Smartwatch
+            {produtoId: 534, quantidade: 1}  // Mochila Impermeável
+        ]
+    },
+    {
+        id: 11,
+        cliente: "Felipe",
+        itens: [
+            {produtoId: 912, quantidade: 3}  // Livro de Programação
+        ]
+    },
+    {
+        id: 12,
+        cliente: "Amanda",
+        itens: [
+            {produtoId: 859, quantidade: 2}, // Moletom Canguru
+            {produtoId: 15, quantidade: 1}   // Fone de Ouvido
+        ]
+    },
+    {
+        id: 13,
+        cliente: "Gabriel",
+        itens: [
+            {produtoId: 295, quantidade: 1}, // Garrafa Térmica
+            {produtoId: 4, quantidade: 5}    // Biscoito
+        ]
+    },
+    {
+        id: 14,
+        cliente: "Isabela",
+        itens: [
+            {produtoId: 534, quantidade: 1}, // Mochila Impermeável
+            {produtoId: 711, quantidade: 1}, // Smartwatch
+            {produtoId: 912, quantidade: 1}  // Livro de Programação
+        ]
     }
 ];
+
 function pedidosExistentes(){
     for (const pedido of pedidos){
         console.log(`Pedido No. 0${pedido.id}:\n Cliente: ${pedido.cliente}`)
@@ -106,17 +159,6 @@ export function mostValue(){
         }
     }
     return valorMaisAlto
-}
-export function pedidoMostValue(){
-    let valorMaisAlto = 0;
-    for (const pedido of pedidos){
-        const {cliente, id} = pedido
-        let valorAtual = totalPedido(id)
-        if (valorMaisAlto < valorAtual){
-            valorMaisAlto = valorAtual
-        }
-        
-    }
 }
 export const resumoPedido = (id) =>{
     const pedido = pedidoById(id)

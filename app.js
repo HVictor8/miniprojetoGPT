@@ -3,7 +3,7 @@ import {nomeByPrice, verificarEstoque, produtosCaros, valorEstoque} from "./prod
 import pedidosExistente, { pedidoById, totalPedido, resumoPedido, mostValueOrder } from "./pedidos.js"
 
 //Relatório 1: Produtos que são mais caros do que o valor atribuido ao argumento
-produtosCaros(0)
+produtosCaros(1000)
 
 //Relatório 2: Uma atualização na função atualizar estoque que retorna quais itens estão em falta
 verificarEstoque()
